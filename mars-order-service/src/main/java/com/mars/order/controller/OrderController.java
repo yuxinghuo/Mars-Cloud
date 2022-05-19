@@ -1,0 +1,42 @@
+package com.mars.order.controller;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cloud.client.serviceregistry.Registration;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.client.RestTemplate;
+
+
+/**
+ * @Author: Mars
+ * @Description: 订单服务
+ * @Date: 2022/05/19 11:49
+ */
+@RestController
+@RequestMapping("/stock")
+public class OrderController {
+
+    @Autowired
+    private RestTemplate restTemplate;
+    @Autowired
+    private Registration registration;
+
+    /**
+     * 直接调用原生http接口
+     * @param productId
+     * @param stockCount
+     * @return
+     */
+    @GetMapping(value = "/stock/deduct")
+    public String deductStock(@RequestParam("productId") Long productId,
+                              @RequestParam("stockCount") Integer stockCount){
+        return this.restTemplate.getForObject("http://mars-stock-service/stock/deduct/"+productId+"/"+stockCount,String.class);
+    }
+
+    @GetMapping(value = "/getIpAndPort")
+    public String getIpAndPort(){
+        return registration.getHost()+":"+registration.getPort();
+    }
+}

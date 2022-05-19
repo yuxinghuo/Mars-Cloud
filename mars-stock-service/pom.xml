@@ -9,7 +9,7 @@
         <version>2.3.2.RELEASE</version>
         <relativePath/>
     </parent>
-    <groupId>com.marscloud</groupId>
+    <groupId>com.mars.stock</groupId>
     <artifactId>mars-stock-service</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>mars-stock-service</name>
