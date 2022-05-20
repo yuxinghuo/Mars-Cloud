@@ -13,4 +13,14 @@ spring:
         cluster-name: NJ
         metadata:
           version: v1
-
+    sentinel:
+      transport:
+        #配置sentinel的控制台地址
+        dashboard: localhost:8080
+        #指定和控制台通信的Ip
+        #如果不配置 会自动选择一个ip注册
+        client-ip: localhost
+feign:
+  sentinel:
+    # 开启Sentinel对Feign的支持
+    enabled: true

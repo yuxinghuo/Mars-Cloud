@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.PathVariable;
  * @Description: 信用服务层
  * @Date: 2022/05/19 11:49
  */
-@FeignClient(value = "mars-credit-service")
+@FeignClient(value = "mars-credit-service",fallback = CreditServiceFallback.class)
 public interface CreditService {
 
 	@GetMapping(value = "/credit/addCredit/{userId}/{creditCount}")

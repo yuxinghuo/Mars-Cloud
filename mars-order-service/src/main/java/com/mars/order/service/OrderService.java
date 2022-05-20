@@ -20,6 +20,7 @@ public class OrderService {
 	@Autowired
 	private WmsService wmsService;
 
+	//@Transactional
 	public String createOrder(Long productId, Long userId, Integer stockCount, Integer creditCount) {
 		System.out.println("创建一条订单+1");
 		stockService.deductStock(productId,stockCount);
