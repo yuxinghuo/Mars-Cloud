@@ -3,6 +3,7 @@ package com.mars.order.service;
 import com.mars.order.feign.CreditService;
 import com.mars.order.feign.StockService;
 import com.mars.order.feign.WmsService;
+import io.seata.spring.annotation.GlobalTransactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -19,7 +20,7 @@ public class OrderService {
 	private CreditService creditService;
 	@Autowired
 	private WmsService wmsService;
-
+	//@GlobalTransactional    //seata控制事务 但性能会下降
 	//@Transactional
 	public String createOrder(Long productId, Long userId, Integer stockCount, Integer creditCount) {
 		System.out.println("创建一条订单+1");
